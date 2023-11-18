@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 
-// import router
+// import router e
 const authRouter = require("./routes/auth.routes");
 
 Sentry.init({
