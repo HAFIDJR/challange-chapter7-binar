@@ -10,7 +10,7 @@ const { createServer } = require("node:http");
 const server = createServer(app);
 // const io = new Server(server);
 global.io = new Server(server);
-app.use(Sentry.Handlers.tracingHandler());
+
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -33,6 +33,7 @@ io.on("connection", (socket) => {
 });
 
 app.use(Sentry.Handlers.requestHandler());
+app.use(Sentry.Handlers.tracingHandler());
 
 // use route
 app.get("/test", (req, res) => {
